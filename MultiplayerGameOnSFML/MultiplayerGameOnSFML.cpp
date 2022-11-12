@@ -22,8 +22,7 @@ Rule: each player has 7 cards
 int main() {
 	sf::RenderWindow window(sf::VideoMode(800, 600), "UNO");
 	//sf::CircleShape shape(100.f);
-
-	Card UNO(DRAW, GREEN);
+	Card UNO(SKIP,RED);
 
 	//shape.setFillColor(sf::Color::Green);
 
@@ -36,7 +35,7 @@ int main() {
 		}
 
 		window.clear(sf::Color(0,0,255));
-		window.draw(UNO.m_sprite);
+		window.draw(UNO.getSprite());
 		window.display();
 	}
 }
