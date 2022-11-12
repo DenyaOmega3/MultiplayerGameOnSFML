@@ -9,10 +9,15 @@ Before playing your next to last card, player must reply "UNO". If someone spots
 
 ## Scoring
 Draw - 20 pts
+
 Reverse - 20 pts
+
 Skip - 20 pts
+
 Wild - 50 pts
+
 Wild Draw - 50 pts
+
 Number - number pts
 
 ## When to stop the game
