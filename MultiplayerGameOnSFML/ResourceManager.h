@@ -22,5 +22,5 @@ public:
 	
 	static ResourceManager* getInstance(const std::string& path, const std::string& filename);
 
-	sf::Texture getTexture();
+	const sf::Texture &getTexture();
 };

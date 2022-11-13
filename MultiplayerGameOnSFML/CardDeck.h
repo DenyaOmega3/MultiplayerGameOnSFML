@@ -8,7 +8,7 @@
 
 class CardDeck
 {
-	std::list<Card> m_deck;
+	std::vector<Card> m_deck;
 
 public:
 	CardDeck();

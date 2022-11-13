@@ -6,6 +6,7 @@ CardDeck::CardDeck()
 {
 	m_deck.resize(0);
 	//See how to simplify this
+
 	for (int i = 0; i < 4; i++) {
 		m_deck.emplace_back(ZERO, static_cast<ColorCard>(i));
 		m_deck.emplace_back(WILD);
@@ -22,8 +23,9 @@ CardDeck::CardDeck()
 
 void CardDeck::shuffle()
 {
-	//unsigned int seed = std::chrono::system_clock::now().time_since_epoch().count();
-	//std::shuffle(m_deck.begin(), m_deck.end(), std::default_random_engine(seed));
+	unsigned int seed = std::chrono::system_clock::now().time_since_epoch().count();
+	int var = m_deck.size();
+	std::shuffle(m_deck.begin(), m_deck.end(), std::default_random_engine(seed));
 }
 
 Card& CardDeck::getTopCard()

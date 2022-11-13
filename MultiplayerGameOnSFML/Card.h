@@ -24,7 +24,6 @@ enum ColorCard {
 class Card
 {
 	sf::Sprite m_sprite;
-	sf::Texture m_texture;
 
 	CardType m_cardType;
 	ColorCard m_colorCard;

@@ -15,10 +15,9 @@ void Card::setScore() {
 }
 
 void Card::setSprite() {
-	m_texture = ResourceManager::getInstance(path, name)->getTexture();
-	m_sprite.setTexture(m_texture);
-
+	m_sprite.setTexture(ResourceManager::getInstance(path, name)->getTexture());
 	m_sprite.setTextureRect(getRectangle());
+
 	m_sprite.setPosition(100, 100);
 	m_sprite.scale(3, 3);
 }
@@ -63,8 +62,7 @@ Card::Card(CardType cardType) : Card(cardType,NONE)
 {
 }
 
-Card::Card() : Card(SHIRT)
-{
+Card::Card() : Card(SHIRT) {
 }
 
 const sf::Sprite& Card::getSprite() const {

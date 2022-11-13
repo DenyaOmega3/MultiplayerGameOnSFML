@@ -17,18 +17,13 @@ Card deck: 112 cards
 Rule: each player has 7 cards
 */
 
-//Task: make sf::Texture for UNO cards a shared resource [check]
-//Create resource manager and see how singleton works
+//Task: modify ResourceManager for thread-safety
+//Task2: overload window.draw for other objects
 
 int main() {
-
 	sf::RenderWindow window(sf::VideoMode(800, 600), "UNO");
-	//sf::CircleShape shape(100.f);
 	CardDeck deck;
-	//deck.shuffle();
-	int value;
-
-	//shape.setFillColor(sf::Color::Green);
+	deck.shuffle();
 
 	while (window.isOpen()) {
 		sf::Event events;
@@ -40,7 +35,6 @@ int main() {
 
 		window.clear(sf::Color(0,0,255));
 		window.draw(deck.getTopCard().getSprite());
-		value = deck.getTopCard().getScore();
 		window.display();
 	}
 }

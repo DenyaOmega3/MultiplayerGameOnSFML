@@ -16,6 +16,6 @@ ResourceManager* ResourceManager::getInstance(const std::string& path, const std
 	return m_manager;
 }
 
-sf::Texture ResourceManager::getTexture() {
+const sf::Texture& ResourceManager::getTexture() {
 	return m_texture;
 }
