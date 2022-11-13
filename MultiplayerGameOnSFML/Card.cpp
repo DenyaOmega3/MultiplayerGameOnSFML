@@ -3,6 +3,7 @@
 std::string path = "Sprites/";
 std::string name = "UnoCards.png";
 
+//Probably not its responsibility
 void Card::setScore() {
 	switch (m_cardType) {
 	case DRAW: case SKIP: case REVERSE: case WILD:
@@ -18,10 +19,12 @@ void Card::setSprite() {
 	m_sprite.setTexture(ResourceManager::getInstance(path, name)->getTexture());
 	m_sprite.setTextureRect(getRectangle());
 
-	m_sprite.setPosition(100, 100);
-	m_sprite.scale(3, 3);
+	sf::Sprite& checkAddress = m_sprite;
+
+	setPosition(sf::Vector2f(0.0f, 0.0f));
 }
 
+//Probably not its responsibility
 sf::IntRect&& Card::getRectangle() {
 	int width = 32, height = 48;
 	int marginX, marginY;
@@ -53,12 +56,15 @@ sf::IntRect&& Card::getRectangle() {
 	return sf::IntRect(xPosition, yPosition, width, height);
 }
 
-Card::Card(CardType cardType, ColorCard colorCard) : m_cardType(cardType), m_colorCard(colorCard) {
+Card::Card(CardType cardType, ColorCard colorCard) 
+	: m_cardType(cardType), m_colorCard(colorCard), m_facingDown(false) {
 	setScore();
 	setSprite();
+	scale(3, 3);
 }
 
-Card::Card(CardType cardType) : Card(cardType,NONE)
+Card::Card(CardType cardType) 
+	: Card(cardType,NONE)
 {
 }
 
@@ -82,4 +88,39 @@ CardType Card::getCardType() const
 ColorCard Card::getColorCard() const
 {
 	return m_colorCard;
+}
+
+void Card::draw(sf::RenderTarget& target, sf::RenderStates states) const 
+{
+	target.draw(m_sprite, states);
+}
+
+void Card::setPosition(const sf::Vector2f& position) {
+	m_sprite.setPosition(position);
+}
+
+sf::Vector2f Card::getPosition() const
+{
+	return m_sprite.getPosition();
+}
+
+void Card::scale(float factorX, float factorY)
+{
+	m_sprite.scale(factorX, factorY);
+}
+
+void Card::switchFace()
+{
+	CardType tmpVariable = m_cardType;
+	sf::Vector2f resetCoords = m_sprite.getPosition();
+	if (!m_facingDown) {
+		m_cardType = SHIRT;
+		setSprite();
+		m_cardType = tmpVariable;
+	}
+	else
+		setSprite();
+
+	setPosition(resetCoords);
+	m_facingDown = !m_facingDown;
 }

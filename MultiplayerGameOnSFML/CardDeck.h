@@ -14,7 +14,5 @@ public:
 	CardDeck();
 	void shuffle();
 	Card& getTopCard();
-
-	static int iterator;
 };
 

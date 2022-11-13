@@ -1,7 +1,5 @@
 #include "CardDeck.h"
 
-int CardDeck::iterator = 0;
-
 CardDeck::CardDeck()
 {
 	m_deck.resize(0);

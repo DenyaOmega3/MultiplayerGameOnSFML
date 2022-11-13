@@ -1,5 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include "CardDeck.h"
+#include <iostream>
 
 /*
 UNO game
@@ -25,16 +26,26 @@ int main() {
 	CardDeck deck;
 	deck.shuffle();
 
+	deck.getTopCard().setPosition(sf::Vector2f(200, 200));
+
 	while (window.isOpen()) {
 		sf::Event events;
 
 		while (window.pollEvent(events)) {
 			if (events.type == sf::Event::Closed)
 				window.close();
+			if (events.type == sf::Event::MouseButtonPressed) {
+				if (events.mouseButton.button == sf::Mouse::Left) {
+					if (events.mouseButton.x >= deck.getTopCard().getPosition().x && 
+						events.mouseButton.x <= deck.getTopCard().getPosition().x+32*3) {
+						deck.getTopCard().switchFace();
+					}
+				}
+			}
 		}
 
-		window.clear(sf::Color(0,0,255));
-		window.draw(deck.getTopCard().getSprite());
+		window.clear(sf::Color(0, 0, 255));
+		window.draw(deck.getTopCard());
 		window.display();
 	}
 }

@@ -21,7 +21,7 @@ enum ColorCard {
 	RED = 0, YELLOW, GREEN, BLUE, NONE = -1
 };
 
-class Card
+class Card : public sf::Drawable
 {
 	sf::Sprite m_sprite;
 
@@ -33,6 +33,8 @@ class Card
 	void setSprite();
 	sf::IntRect&& getRectangle();
 
+	bool m_facingDown;
+
 public:	
 	Card(CardType cardType, ColorCard colorCard);
 	Card(CardType cardType);
@@ -43,4 +45,13 @@ public:
 	int getScore() const;
 	CardType getCardType() const;
 	ColorCard getColorCard() const;
+
+	void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
+
+	void setPosition(const sf::Vector2f& position);
+	sf::Vector2f getPosition() const;
+
+	void scale(float factorX, float factorY);
+
+	void switchFace();
 };
