@@ -1,5 +1,5 @@
 #include <SFML/Graphics.hpp>
-#include "Card.h"
+#include "CardDeck.h"
 
 /*
 UNO game
@@ -17,12 +17,16 @@ Card deck: 112 cards
 Rule: each player has 7 cards
 */
 
-//Task1: display an UNO card on my screen
+//Task: make sf::Texture for UNO cards a shared resource [check]
+//Create resource manager and see how singleton works
 
 int main() {
+
 	sf::RenderWindow window(sf::VideoMode(800, 600), "UNO");
 	//sf::CircleShape shape(100.f);
-	Card UNO(SKIP,RED);
+	CardDeck deck;
+	//deck.shuffle();
+	int value;
 
 	//shape.setFillColor(sf::Color::Green);
 
@@ -35,7 +39,8 @@ int main() {
 		}
 
 		window.clear(sf::Color(0,0,255));
-		window.draw(UNO.getSprite());
+		window.draw(deck.getTopCard().getSprite());
+		value = deck.getTopCard().getScore();
 		window.display();
 	}
 }

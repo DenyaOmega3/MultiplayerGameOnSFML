@@ -15,7 +15,7 @@ void Card::setScore() {
 }
 
 void Card::setSprite() {
-	assert(m_texture.loadFromFile(path + name), "Couldn't load image");
+	m_texture = ResourceManager::getInstance(path, name)->getTexture();
 	m_sprite.setTexture(m_texture);
 
 	m_sprite.setTextureRect(getRectangle());
@@ -60,6 +60,10 @@ Card::Card(CardType cardType, ColorCard colorCard) : m_cardType(cardType), m_col
 }
 
 Card::Card(CardType cardType) : Card(cardType,NONE)
+{
+}
+
+Card::Card() : Card(SHIRT)
 {
 }
 

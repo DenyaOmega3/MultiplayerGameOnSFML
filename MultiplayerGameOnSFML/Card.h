@@ -1,7 +1,9 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include <cassert>
 #include <string>
+#include <memory>
+#include <cassert>
+#include "ResourceManager.h"
 
 /*
 Uno Card description:
@@ -21,8 +23,9 @@ enum ColorCard {
 
 class Card
 {
-	sf::Texture m_texture;
 	sf::Sprite m_sprite;
+	sf::Texture m_texture;
+
 	CardType m_cardType;
 	ColorCard m_colorCard;
 	int m_score;
@@ -34,6 +37,7 @@ class Card
 public:	
 	Card(CardType cardType, ColorCard colorCard);
 	Card(CardType cardType);
+	Card();
 
 	const sf::Sprite& getSprite() const;
 
@@ -41,4 +45,3 @@ public:
 	CardType getCardType() const;
 	ColorCard getColorCard() const;
 };
-
