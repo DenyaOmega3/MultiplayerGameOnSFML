@@ -3,8 +3,7 @@
 ## Basic card deck:
 ![UnoCards](https://user-images.githubusercontent.com/74725936/201487344-df0c8c41-5087-461e-8e51-b93a774155da.png)
 
-Tileset was taken [here](https://toppng.com/cards-and-cursors-uno-cards-sprite-sheet-PNG-free-PNG-Images_201356)
-Username who created the tileset is mentioned in the link above
+Tileset was taken [here](https://toppng.com/cards-and-cursors-uno-cards-sprite-sheet-PNG-free-PNG-Images_201356). A user who created the tileset is mentioned in the link above
 
 ## Basic rules:
 First card on the table is placed. Each player has 7 cards. If player has card that matches the color OR matches the card type, it can be placed above. Otherwise player must take one card and place it if suitable or skip the move.
